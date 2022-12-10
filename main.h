@@ -103,6 +103,8 @@ char *getErrorMessage(void);
 char *itoa(unsigned int);
 
 /* check_path */
+_Bool checkPath(config *);
+_Bool checkEdgeCases(config *);
 
 /* split_string */
 
@@ -111,8 +113,15 @@ char *itoa(unsigned int);
 /* linkedlist_fxn */
 
 /* realloc_mem */
+void *_realloc(void *, unsigned int, unsigned int);
+char *_memcpy(char *, char *, unsigned int);
 
 /* free_mem */
+void freeMembers(config *);
+void freeArgsAndBuffer(config *);
+void freeArgs(char **);
+void freeList(linked_l *);
+
 
 /* welcome_text */
 
