@@ -33,7 +33,7 @@ int _atoi(char *s)
 			num = num * 10 + s[i] - '0';
 		else
 			return (-1);
-		
+
 		i++;
 	}
 

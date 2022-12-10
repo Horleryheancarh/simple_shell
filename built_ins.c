@@ -91,7 +91,7 @@ int historyFunc(config *build)
  *
  *Return: 1 on success, 0 on failure
  */
-int aliasesFunc(config *build)
+int aliasFunc(config *build)
 {
 	char *str = "Currently in development\n";
 

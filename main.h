@@ -70,27 +70,37 @@ typedef struct builtInCommands
 } type_b;
 
 /* main */
-config *configInit(config *build);
+config *configInit(config *);
 
 /* built_ins */
-_Bool findBuiltIns(config *build);
-int exitFunc(config *build);
-int historyFunc(config *build);
-int aliasFunc(config *build);
+_Bool findBuiltIns(config *);
+int exitFunc(config *);
+int historyFunc(config *);
+int aliasFunc(config *);
 
 /* cd */
 
 /* env */
+int envFunc(config *);
+int setenvFunc(config *);
+int unsetenvFunc(config *);
+int _isalpha(int);
 
 /* help */
 
 /* built_in_helpers */
+int countArgs(char **);
+int _atoi(char *);
 
 /* shell */
 
 /* shell_helpers */
 
 /* error_handler */
+void errorHandler(config *);
+unsigned int countDigits(int);
+char *getErrorMessage(void);
+char *itoa(unsigned int);
 
 /* check_path */
 
