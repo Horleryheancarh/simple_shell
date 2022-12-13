@@ -95,6 +95,10 @@ int _atoi(char *);
 /* shell */
 
 /* shell_helpers */
+void insertNullByte(char *, unsigned int);
+void displayPrompt(void);
+void displayNewLine(void);
+void sigintHandler(int);
 
 /* error_handler */
 void errorHandler(config *);
@@ -107,8 +111,19 @@ _Bool checkPath(config *);
 _Bool checkEdgeCases(config *);
 
 /* split_string */
+_Bool splitString(config *);
+unsigned int countWords(char **);
+_Bool isSpace(char);
 
 /* string_helpers */
+int _strlen(char *);
+char *_strcat(char *, char *);
+int _strcmp(char *, char *);
+char *_strdup(char *);
+char *_strcpy(char *, char *);
+char *_strtok(char *, char *);
+int _strcspn(char *, char *);
+char *_strchr(char *, char);
 
 /* linkedlist_fxn */
 
