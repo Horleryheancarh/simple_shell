@@ -47,7 +47,8 @@ int _strcmp(char *s1, char *s2)
 		if (*s1 != *s2)
 			break;
 
-		s1++; s2++;
+		s1++;
+		s2++;
 	}
 
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
@@ -69,7 +70,7 @@ char *_strdup(char *s)
 
 	len = _strlen(s);
 	copy = malloc(sizeof(char) * len + 1);
-	
+
 	if (!copy)
 	{
 		perror("Malloc failed\n");
@@ -90,7 +91,7 @@ char *_strdup(char *s)
  *
  *Return: pointer to new string
  */
-char *_strcpy(char *dest, @src)
+char *_strcpy(char *dest, char *src)
 {
 	char *p = dest;
 

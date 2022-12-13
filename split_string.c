@@ -36,7 +36,7 @@ _Bool splitString(config *build)
 
 /**
  *countWords - count number of words in a string
- *@str: input string
+ *@s: input string
  *
  *Return: integer
  */

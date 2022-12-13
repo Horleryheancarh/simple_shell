@@ -31,7 +31,7 @@ char *_strtok(char *s, char *d)
 }
 
 /**
- *_strcspn - returns first 
+ *_strcspn - returns first
  *@str: string
  *@ch: char
  *
