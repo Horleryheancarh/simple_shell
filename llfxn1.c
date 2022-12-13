@@ -86,7 +86,7 @@ linked_l *addNodeEnd(linked_l **head, char *str)
  *
  *Return: number of elements in the list
  */
-size_t printList(const linked_l *h)
+size_t printList(linked_l *h)
 {
 	register int count = 0;
 

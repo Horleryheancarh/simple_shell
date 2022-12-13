@@ -80,6 +80,7 @@ int aliasFunc(config *);
 
 /* cd */
 
+
 /* env */
 int envFunc(config *);
 int setenvFunc(config *);
@@ -88,11 +89,13 @@ int _isalpha(int);
 
 /* help */
 
+
 /* built_in_helpers */
 int countArgs(char **);
 int _atoi(char *);
 
 /* shell */
+
 
 /* shell_helpers */
 void insertNullByte(char *, unsigned int);
@@ -125,7 +128,16 @@ char *_strtok(char *, char *);
 int _strcspn(char *, char *);
 char *_strchr(char *, char);
 
-/* linkedlist_fxn */
+/* llfxn */
+char *getNodeAtIndex(linked_l **, unsigned int);
+int deleteNodeAtIndex(linked_l **, unsigned int);
+int searchNode(linked_l *, char *);
+size_t list_len(linked_l *);
+size_t printList(linked_l *);
+linked_l *addNode(linked_l **, char *);
+linked_l *addNodeEnd(linked_l **, char *);
+linked_l *generateLinkedList(char **);
+linked_l *addNodeAtIndex(linked_l **, int, char *);
 
 /* realloc_mem */
 void *_realloc(void *, unsigned int, unsigned int);
