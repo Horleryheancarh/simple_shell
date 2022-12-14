@@ -86,6 +86,7 @@ int envFunc(config *);
 int setenvFunc(config *);
 int unsetenvFunc(config *);
 int _isalpha(int);
+char *_getenv(char *, char **);
 
 /* help */
 
@@ -95,7 +96,11 @@ int countArgs(char **);
 int _atoi(char *);
 
 /* shell */
-
+void shell(config *);
+void checkAndGetLine(config *);
+void forkAndExecute(config *);
+void convertLLtoArr(config *);
+void stripComments(char *);
 
 /* shell_helpers */
 void insertNullByte(char *, unsigned int);
