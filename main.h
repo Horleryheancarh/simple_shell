@@ -89,7 +89,11 @@ int _isalpha(int);
 char *_getenv(char *, char **);
 
 /* help */
-
+int helpFunc(config *);
+int displayHelpMenu(void);
+int helpExit(config *);
+int helpEnv(config *);
+int helpHistory(config *);
 
 /* built_in_helpers */
 int countArgs(char **);
