@@ -94,6 +94,11 @@ int displayHelpMenu(void);
 int helpExit(config *);
 int helpEnv(config *);
 int helpHistory(config *);
+int helpAlias(config *);
+int helpCd(config *);
+int helpSetenv(config *);
+int helpUnsetenv(config *);
+int helpHelp(config *);
 
 /* built_in_helpers */
 int countArgs(char **);
