@@ -1,6 +1,31 @@
 #include "main.h"
 
 /**
+ *_getenv - retrieve env variable
+ *@s: String
+ *@environ: local environment
+ *
+ *Return: integer
+ */
+char *_getenv(char *s, char **environ)
+{
+	register int i = 0;
+	char *tok, *status;
+
+	while (environ[i])
+	{
+		tok = _strtok(environ[i], "=");
+		if (_strcmp(tok, s) == 0)
+		{
+			status = _strtok(NULL, "=");
+			return (status);
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+/**
  *envFunc - print the environ
  *@build: input field
  *
@@ -65,7 +90,7 @@ int unsetenvFunc(config *build)
 	{
 		if (_isalpha(build->args[i][0]) || build->args[i][0] == '_')
 		{
-			foundVar = searchNode(buld->env, build->args[i]);
+			foundVar = searchNode(build->env, build->args[i]);
 
 			if (foundVar > -1)
 			{

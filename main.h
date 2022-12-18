@@ -49,7 +49,7 @@ typedef struct configurations
 {
 	linked_l *env;
 	char **envList;
-	char *args;
+	char **args;
 	char *buffer;
 	char *path;
 	char *fullPath;
@@ -79,6 +79,13 @@ int historyFunc(config *);
 int aliasFunc(config *);
 
 /* cd */
+int cdFunc(config *);
+int updateOld(config *);
+_Bool updateCur(config *, int);
+_Bool updateEnviron(config *);
+_Bool cdToHome(config *);
+_Bool cdToPrevious(config *);
+_Bool cdToCustom(config *);
 
 
 /* env */
@@ -129,7 +136,7 @@ _Bool checkEdgeCases(config *);
 
 /* split_string */
 _Bool splitString(config *);
-unsigned int countWords(char **);
+unsigned int countWords(char *);
 _Bool isSpace(char);
 
 /* string_helpers */
@@ -143,7 +150,7 @@ int _strcspn(char *, char *);
 char *_strchr(char *, char);
 
 /* llfxn */
-char *getNodeAtIndex(linked_l **, unsigned int);
+char *getNodeAtIndex(linked_l *, unsigned int);
 int deleteNodeAtIndex(linked_l **, unsigned int);
 int searchNode(linked_l *, char *);
 size_t list_len(linked_l *);

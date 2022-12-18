@@ -11,7 +11,7 @@ int main(int ac, char **av)
 {
 	config build;
 
-	void (ac);
+	(void)ac;
 	signal(SIGINT, sigintHandler);
 	configInit(&build);
 	build.shellName = av[0];

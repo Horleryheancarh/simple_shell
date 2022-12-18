@@ -18,7 +18,7 @@ void errorHandler(config *build)
 	_strcat(error, alpha);
 	_strcat(error, ": ");
 	_strcat(error, build->args[0]);
-	_strcat(error, getErrorMessage);
+	_strcat(error, getErrorMessage());
 	if (build->args[1])
 	{
 		if (errno != EBADCD)
@@ -26,7 +26,7 @@ void errorHandler(config *build)
 		_strcat(error, build->args[1]);
 	}
 	_strcat(error, "\n");
-	ptr = _strchr(error, "\n");
+	ptr = _strchr(error, '\n');
 	len = ptr - error;
 	write(STDERR_FILENO, error, len + 1);
 	free(alpha);
@@ -115,8 +115,8 @@ char *itoa(unsigned int n)
 
 	while (n > 0)
 	{
-		s[i - 1] = num % 10 + '0';
-		num = num / 10;
+		s[i - 1] = n % 10 + '0';
+		n = n / 10;
 		i--;
 	}
 

@@ -9,9 +9,9 @@
 _Bool splitString(config *build)
 {
 	register unsigned int i = 0;
-	char *tok, *copy;
+	char *tok, *cpy;
 
-	if (countWoord(build->buffer) == 0)
+	if (countWords(build->buffer) == 0)
 	{
 		build->args = NULL;
 		free(build->buffer);

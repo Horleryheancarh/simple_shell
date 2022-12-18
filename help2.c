@@ -35,7 +35,7 @@ int helpCd(config *build)
 	_strcat(s, str3);
 	_strcat(s, str4);
 
-	write(STD_FILENO, s, _strlen(s));
+	write(STDOUT_FILENO, s, _strlen(s));
 	return (1);
 }
 

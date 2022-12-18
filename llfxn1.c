@@ -29,7 +29,7 @@ linked_l *addNode(linked_l **head, char *str)
 		exit(errno);
 	}
 
-	temp->string = c;
+	temp->string = s;
 	temp->next = *head;
 	*head = temp;
 	return (*head);
@@ -111,8 +111,8 @@ size_t printList(linked_l *h)
 int deleteNodeAtIndex(linked_l **head, unsigned int index)
 {
 	unsigned int i;
-	listint_t *prev;
-	listint_t *next;
+	linked_l *prev;
+	linked_l *next;
 
 	if (!head || !(*head))
 		return (-1);
@@ -120,7 +120,7 @@ int deleteNodeAtIndex(linked_l **head, unsigned int index)
 
 	if (!index)
 	{
-		head = prev->next;
+		*head = prev->next;
 		free(prev);
 		return (1);
 	}

@@ -18,7 +18,7 @@ void shell(config *build)
 		if (findBuiltIns(build) == true)
 			continue;
 
-		checkPath;
+		checkPath(build);
 		forkAndExecute(build);
 	}
 }
