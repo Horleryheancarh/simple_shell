@@ -10,7 +10,7 @@
 int cdFunc(config *build)
 {
 	register uint count = 0;
-	_Bool ableToChange = false;
+	int ableToChange = 0;
 
 	count = countArgs(build->args);
 	if (count == 1)
@@ -20,7 +20,7 @@ int cdFunc(config *build)
 	else
 		ableToChange = cdToCustom(build);
 
-	if (ableToChange)
+	if (ableToChange == 1)
 		updateEnviron(build);
 
 	return (1);
@@ -30,16 +30,16 @@ int cdFunc(config *build)
  *cdToHome - change dir to home
  *@build: input field
  *
- *Return: true on success, false on failure
+ *Return: 1 on success, 0 on failure
  */
-_Bool cdToHome(config *build)
+int cdToHome(config *build)
 {
 	register int i;
 	char *s, *p;
 
 	i = searchNode(build->env, "HOME");
 	if (i == -1)
-		return (true);
+		return (1);
 
 	s = getNodeAtIndex(build->env, i);
 	p = _strchr(s, '=');
@@ -47,16 +47,16 @@ _Bool cdToHome(config *build)
 	chdir(p);
 	free(s);
 
-	return (true);
+	return (1);
 }
 
 /**
  *cdToPrevious - change dir to previous
  *@build: input field
  *
- *Return: true on success, false on failure
+ *Return: 1 on success, 0 on failure
  */
-_Bool cdToPrevious(config *build)
+int cdToPrevious(config *build)
 {
 	register int i;
 	char *s, *p;
@@ -70,7 +70,7 @@ _Bool cdToPrevious(config *build)
 		chdir(current);
 		write(STDOUT_FILENO, current, _strlen(current));
 		displayNewLine();
-		return (true);
+		return (1);
 	}
 
 	s = getNodeAtIndex(build->env, i);
@@ -81,16 +81,16 @@ _Bool cdToPrevious(config *build)
 	write(STDOUT_FILENO, p, _strlen(p));
 	displayNewLine();
 	free(s);
-	return (true);
+	return (1);
 }
 
 /**
  *cdToCustom - change dir to input
  *@build: input field
  *
- *Return: true on success, false on failure
+ *Return: 1 on success, 0 on failure
  */
-_Bool cdToCustom(config *build)
+int cdToCustom(config *build)
 {
 	register int changeStatus;
 
@@ -99,10 +99,10 @@ _Bool cdToCustom(config *build)
 	{
 		errno = EBADCD;
 		errorHandler(build);
-		return (false);
+		return (0);
 	}
 
-	return (true);
+	return (1);
 }
 
 /**
@@ -111,11 +111,11 @@ _Bool cdToCustom(config *build)
  *
  *Return: true on success, false on failure
  */
-_Bool updateEnviron(config *build)
+int updateEnviron(config *build)
 {
 	register int i;
 
 	i = updateOld(build);
 	updateCur(build, i);
-	return (true);
+	return (1);
 }

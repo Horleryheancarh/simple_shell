@@ -84,7 +84,7 @@ int setenvFunc(config *build)
 int unsetenvFunc(config *build)
 {
 	register int foundVar, i = 1;
-	_Bool foundMatch = false;
+	int foundMatch = 0;
 
 	while (build->args[i])
 	{
@@ -95,12 +95,12 @@ int unsetenvFunc(config *build)
 			if (foundVar > -1)
 			{
 				deleteNodeAtIndex(&build->env, foundVar);
-				foundMatch = true;
+				foundMatch = 1;
 			}
 		}
 		i++;
 	}
-	if (foundMatch == false)
+	if (foundMatch == 0)
 	{
 		errno = ENOSTRING;
 		errorHandler(build);

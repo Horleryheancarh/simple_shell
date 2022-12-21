@@ -14,7 +14,7 @@ int helpFunc(config *build)
 		{"unsetenv", helpUnsetenv}, {"help", helpHelp}, {NULL, NULL}
 	};
 	register int i, j = 1, argCount = countArgs(build->args);
-	_Bool foundCommand = false;
+	int foundCommand = 0;
 
 	if (argCount == 1)
 		return (displayHelpMenu());
@@ -25,7 +25,7 @@ int helpFunc(config *build)
 		{
 			if (_strcmp(build->args[j], help_arr[i].command) == 0)
 			{
-				foundCommand = true;
+				foundCommand = 1;
 				help_arr[i].func(build);
 				break;
 			}
@@ -34,7 +34,7 @@ int helpFunc(config *build)
 		j++;
 	}
 
-	if (foundCommand == false)
+	if (foundCommand == 0)
 	{
 		errno = ENOBUILTIN;
 		errorHandler(build);

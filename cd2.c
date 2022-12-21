@@ -39,9 +39,9 @@ int updateOld(config *build)
  *@build: input field
  *@i: index in linked list
  *
- *Return: true on success, false on failure
+ *Return: 1 on success, 0 on failure
  */
-_Bool updateCur(config *build, int i)
+int updateCur(config *build, int i)
 {
 	static char tmp[BUFSIZE], cwd[BUFSIZE];
 
@@ -58,5 +58,5 @@ _Bool updateCur(config *build, int i)
 
 	insertNullByte(tmp, 0);
 	insertNullByte(cwd, 0);
-	return (true);
+	return (1);
 }

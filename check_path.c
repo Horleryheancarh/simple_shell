@@ -4,18 +4,18 @@
  *checkPath - search for dir of cmd
  *@build: input field
  *
- *Return: true or false
+ *Return: 1 on success or 0 on failure
  */
-_Bool checkPath(config *build)
+int checkPath(config *build)
 {
 	register int len;
 	static char buffer[BUFSIZE];
 	struct stat st;
 	char *tok, *copy, *delim = ":", *temp;
-	_Bool inLoop = false;
+	int inLoop = 0;
 
 	if (checkEdgeCases(build))
-		return (true);
+		return (1);
 	copy = _strdup(build->path);
 	tok = _strtok(copy, delim);
 	while (tok)
@@ -25,7 +25,7 @@ _Bool checkPath(config *build)
 		{
 			build->fullPath = build->args[0];
 			free(copy);
-			return (true);
+			return (1);
 		}
 		len = _strlen(tok) + _strlen(build->args[0]) + 2;
 		_strcat(buffer, tok);
@@ -36,24 +36,24 @@ _Bool checkPath(config *build)
 		{
 			free(copy);
 			build->fullPath = buffer;
-			return (true);
+			return (1);
 		}
 		insertNullByte(buffer, 0);
 		tok = _strtok(NULL, delim);
-		inLoop = true;
+		inLoop = 1;
 	}
 	build->fullPath = build->args[0];
 	free(copy);
-	return (false);
+	return (0);
 }
 
 /**
  *checkEdgeCases - helper func for checkPath
  *@build: input field
  *
- *Return: true or false
+ *Return: 1 on success or 0 on failure
  */
-_Bool checkEdgeCases(config *build)
+int checkEdgeCases(config *build)
 {
 	char *copy;
 	struct stat st;
@@ -64,16 +64,16 @@ _Bool checkEdgeCases(config *build)
 	{
 		build->fullPath = build->args[0];
 		free(copy);
-		return (true);
+		return (1);
 	}
 
 	if (*copy == ':' && stat(build->args[0], &st) == 0)
 	{
 		build->fullPath = build->args[0];
 		free(copy);
-		return (true);
+		return (1);
 	}
 
 	free(copy);
-	return (false);
+	return (0);
 }

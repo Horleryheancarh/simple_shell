@@ -44,29 +44,31 @@ linked_l *addNode(linked_l **head, char *str)
  */
 linked_l *addNodeEnd(linked_l **head, char *str)
 {
-	linked_l *temp = *head, *new;
+	linked_l *temp = *head;
+	linked_l *new;
 	char *s;
 
 	if (!str)
 		return (NULL);
 
-	temp = malloc(sizeof(linked_l));
-	if (!temp)
+	new = malloc(sizeof(linked_l));
+	if (!new)
 	{
 		perror("Malloc failed\n");
 		exit(errno);
 	}
 
 
-	s = _strdup(s);
+	s = _strdup(str);
 	if (!s)
 	{
+		free(new);
 		perror("Malloc failed\n");
 		exit(errno);
 	}
 
 	new->string = s;
-	temp->next = NULL;
+	new->next = NULL;
 	if (!*head)
 	{
 		*head = new;

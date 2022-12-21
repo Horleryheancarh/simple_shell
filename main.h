@@ -73,7 +73,7 @@ typedef struct builtInCommands
 config *configInit(config *);
 
 /* built_ins */
-_Bool findBuiltIns(config *);
+int findBuiltIns(config *);
 int exitFunc(config *);
 int historyFunc(config *);
 int aliasFunc(config *);
@@ -81,11 +81,11 @@ int aliasFunc(config *);
 /* cd */
 int cdFunc(config *);
 int updateOld(config *);
-_Bool updateCur(config *, int);
-_Bool updateEnviron(config *);
-_Bool cdToHome(config *);
-_Bool cdToPrevious(config *);
-_Bool cdToCustom(config *);
+int updateCur(config *, int);
+int updateEnviron(config *);
+int cdToHome(config *);
+int cdToPrevious(config *);
+int cdToCustom(config *);
 
 
 /* env */
@@ -131,13 +131,13 @@ char *getErrorMessage(void);
 char *itoa(unsigned int);
 
 /* check_path */
-_Bool checkPath(config *);
-_Bool checkEdgeCases(config *);
+int checkPath(config *);
+int checkEdgeCases(config *);
 
 /* split_string */
-_Bool splitString(config *);
+int splitString(config *);
 unsigned int countWords(char *);
-_Bool isSpace(char);
+int isSpace(char);
 
 /* string_helpers */
 int _strlen(char *);

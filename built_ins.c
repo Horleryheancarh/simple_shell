@@ -4,9 +4,9 @@
  *findBuiltIns - validates if cmd is a builtin
  *@build: build parameters
  *
- *Return: true or false
+ *Return: 1 or 0
  */
-_Bool findBuiltins(config *build)
+int findBuiltIns(config *build)
 {
 	register int i = 0;
 	type_b getBuiltIns[] = {
@@ -27,12 +27,12 @@ _Bool findBuiltins(config *build)
 		{
 			getBuiltIns[i].func(build);
 			freeArgsAndBuffer(build);
-			return (true);
+			return (1);
 		}
 		i++;
 	}
 
-	return (false);
+	return (0);
 }
 
 /**

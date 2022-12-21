@@ -71,7 +71,7 @@ void checkAndGetLine(config *build)
 void stripComments(char *s)
 {
 	register int i = 0;
-	_Bool notFirst = false;
+	int notFirst = 0;
 
 	while (s[i])
 	{
@@ -81,7 +81,7 @@ void stripComments(char *s)
 			return;
 		}
 
-		if (notFirst)
+		if (notFirst == 0)
 		{
 			if (s[i] == '#' && s[i - 1] == ' ')
 			{
@@ -90,7 +90,7 @@ void stripComments(char *s)
 			}
 		}
 		i++;
-		notFirst = true;
+		notFirst = 1;
 	}
 }
 
